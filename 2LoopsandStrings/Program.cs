@@ -9,13 +9,22 @@ class Program
     //Prispaketet består av en sträng som beskriver vilken typ av pris det är (pensionär, ungdom, standard), och en int som beskriver priset i kronor.
     static (string, int) GetPricePackageForAge(int age)
     {
-        if (age < 20)
+        if (age < 20 && age >=5)
         {
             return ("Ungdomspris", 80);
         }
-        else if (age >= 65)
+        else if (age < 5 && age >= 0)
+        {
+            return ("Barnpris", 0);
+        }
+        else if (age >= 65 && age < 100)
         {
             return ("Pensionärspris", 90);
+        }
+
+        else if (age > 100)
+        {
+            return ("Pensionärspris101", 0);
         }
         else
         {
@@ -177,8 +186,10 @@ class Program
                         
                         string text = Console.ReadLine();
 
-                        Console.WriteLine();
                         if (text == "0") break;
+
+                        Console.WriteLine();
+                        
                         //Här använder jag en for-loop för att upprepa texten tio gånger, och skriver ut numret på varje upprepning.
                         //För varje upprepning läggs ett kommatecken till, förutom efter den sista upprepningen.
                         for (int i = 0; i < 10; i++)
